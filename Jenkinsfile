@@ -22,9 +22,10 @@ pipeline {
         }
         stage('Push Docker Image') {
             steps {
-              script {
-                docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) {
-                dockerImage.push("latest")
+                script {
+                    docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) {
+                        dockerImage.push("latest")
+                    }
                 }
             }
         }
@@ -34,7 +35,6 @@ pipeline {
                     kubernetesDeploy(configs: "deploymentservice.yml", kubeconfigId: "k8s_cluster_config")
                 }
             }
-        }
         }
     }
 }
