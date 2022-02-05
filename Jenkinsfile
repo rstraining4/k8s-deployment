@@ -14,10 +14,10 @@ pipeline {
             }
         }
         stage('Build Docker Image') {
-            step {
-              scrip {
-                dockerImage = docker.build dockerimagename
-              }
+            steps {
+                scrip {
+                    dockerImage = docker.build dockerimagename
+                }
             }
         }
         stage('Push Docker Image') {
