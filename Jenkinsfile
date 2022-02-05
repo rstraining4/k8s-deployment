@@ -13,13 +13,22 @@ pipeline {
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/rstraining4/k8s-deployment.git']]])
             }
         }
-        stage('Build Docker Image') {
-            steps {
-                scrip {
+        //stage('Build Docker Image') {
+        //    steps {
+        //        scrip {
+        //            dockerImage = docker.build dockerimagename
+        //        }
+        //    }
+        //}
+
+        stage('Build image') {
+            steps{
+                script {
                     dockerImage = docker.build dockerimagename
                 }
             }
         }
+
         stage('Push Docker Image') {
             steps {
                 script {
