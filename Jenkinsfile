@@ -15,14 +15,14 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
-              scrips {
+              scrip {
                 dockerImage = docker.build dockerimagename
               }
             }
         }
         stage('Push Docker Image') {
             steps {
-              scripts{
+              script {
                 docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) {
                 dockerImage.push("latest")
                 }
