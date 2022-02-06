@@ -17,15 +17,15 @@ spec:
         app: nodeapp 
     spec:
       containers:
+      - name: nodeserver
+        image: rstraining4/nodeapp:latest
+        ports:
+        - containerPort: 3000
         env:
         - name: HTTP_PROXY
           value: null
         - name: HTTPS_PROXY
           value: null
-      - name: nodeserver
-        image: rstraining4/nodeapp:latest
-        ports:
-        - containerPort: 3000
         
         
 ---
